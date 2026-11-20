@@ -11,27 +11,16 @@
   "navigation": {
     "pages": [
       {
-        "group": "Getting Started",
+        "group": "Help center",
         "pages": [
-          "index",
-          "quickstart"
+          "index"
         ]
+      },
+      {
+        "group": "Guides",
+        "pages": []
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/enya_icon.svg",
