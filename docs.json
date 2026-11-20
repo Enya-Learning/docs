@@ -18,7 +18,15 @@
       },
       {
         "group": "Guides",
-        "pages": []
+        "pages": [
+          "guides/index",
+          "guides/tutorials/joining-a-classroom",
+          "guides/tutorials/how-xp-works",
+          "guides/getting-started",
+          "guides/students",
+          "guides/educators",
+          "guides/parents"
+        ]
       }
     ]
   },
