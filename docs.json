@@ -1,52 +1,80 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
   "name": "Enya Learning Help Center",
+  "theme": "maple",
   "colors": {
-    "primary": "#151515",
-    "light": "#3A3A3A",
-    "dark": "#000000"
+    "primary": "#012AFC",
+    "light": "#5671FD",
+    "dark": "#000832"
   },
-  "favicon": "/enya_icon.svg",
-  "navigation": {
-    "pages": [
-      {
-        "group": "Help center",
-        "pages": [
-          "index"
-        ]
-      },
-      {
-        "group": "Guides",
-        "pages": [
-          "guides/index",
-          "guides/tutorials/joining-a-classroom",
-          "guides/tutorials/how-xp-works",
-          "guides/getting-started",
-          "guides/students",
-          "guides/educators",
-          "guides/parents"
-        ]
-      }
-    ]
+  "fonts": {
+    "family": "Inter"
   },
   "logo": {
     "light": "/enya_icon.svg",
-    "dark": "/enya_icon.svg",
+    "dark": "/enya_icon_dark.svg",
     "href": "https://www.enyalearning.com/"
   },
-  "navbar": {
-    "links": [
-      {
-        "href": "https://www.enyalearning.com/",
-        "label": "Enya Learning"
-      }
-    ]
+  "favicon": "/enya_icon.svg",
+  "appearance": {
+    "default": "light"
   },
   "icons": {
     "library": "lucide"
   },
-  "appearance": {
-    "default": "light"
+  "navigation": {
+    "groups": [
+      {
+        "group": "Help center",
+        "pages": ["index"]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          {
+            "group": "Overview",
+            "root": "guides/index",
+            "pages": [
+              "guides/educators",
+              "guides/parents",
+              "guides/students",
+              "guides/getting-started",
+              "guides/tutorials/joining-a-classroom",
+              "guides/tutorials/how-xp-works"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "FAQs",
+        "pages": [
+          {
+            "group": "Overview",
+            "root": "faqs/index",
+            "pages": [
+              "faqs/what-is-enya-learning",
+              "faqs/who-is-this-help-center-for",
+              "faqs/how-do-i-get-started",
+              "faqs/reset-password",
+              "faqs/join-a-classroom",
+              "faqs/where-to-find-guides",
+              "faqs/how-does-xp-work"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Documentation",
+        "pages": ["documentation/index"]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Enya Learning",
+        "href": "https://www.enyalearning.com/"
+      }
+    ]
   }
 }

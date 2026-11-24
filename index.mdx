@@ -3,60 +3,94 @@ title: "How can we help?"
 description: "Find a guide for your role or browse answers to common questions about Enya Learning."
 ---
 
-Start with a quick guide below, or [jump to the FAQs](#frequently-asked-questions) for a fast answer.
+import { useHelpRole } from "./help-role.tsx";
 
-## Find a guide
+export const RoleAwareGuides = () => {
+  const role = useHelpRole();
+  const guides = [
+    {
+      role: "educator",
+      title: "For educators",
+      image: "/images/home-educators.png",
+      href: "/guides/educators",
+      className: "help-course-card help-course-card--role",
+      description: "Get oriented to courses, classrooms, students, and learning insights.",
+    },
+    {
+      role: "parent",
+      title: "For parents",
+      image: "/images/home-parents.png",
+      href: "/guides/parents",
+      className: "help-course-card help-course-card--role",
+      description: "Learn where to find your child's learning and progress information.",
+    },
+    {
+      role: "student",
+      title: "For students",
+      image: "/images/home-students.png",
+      href: "/guides/students",
+      className: "help-course-card help-course-card--role",
+      description: "Explore courses, learning activities, and student guides.",
+    },
+  ];
+  const orderedGuides = role
+    ? [...guides.filter((guide) => guide.role === role), ...guides.filter((guide) => guide.role !== role)]
+    : guides;
 
-<CardGroup cols={2}>
-  <Card title="Getting started" icon="sparkles" href="/guides/getting-started">
-    Sign in, choose your role, and find your way around Enya Learning.
-  </Card>
+  return (
+    <>
+      <CardGroup cols={2}>
+        {orderedGuides.map((guide) => (
+          <Card
+            key={guide.role}
+            title={guide.title}
+            img={guide.image}
+            href={guide.href}
+            className={guide.className}
+          >
+            {guide.description}
+          </Card>
+        ))}
+      </CardGroup>
+      <p>
+        <a href={role ? `/guides?role=${role}` : "/guides"}>View all guides</a>
+      </p>
+    </>
+  );
+};
 
-  <Card title="Find a guide" icon="play" href="/guides">
-    Browse short tutorials for common learning tasks.
-  </Card>
+export const RoleAwareFaqLink = () => {
+  const role = useHelpRole();
+  const roleLabel =
+    role === "educator" ? "educator" : role === "parent" ? "parent" : "student";
 
-  <Card title="For students" icon="book-open" href="/guides/students">
-    Explore courses, learning activities, and student guides.
-  </Card>
+  return (
+    <p>
+      <a href={role ? `/faqs?role=${role}` : "/faqs"}>
+        {role ? `Browse ${roleLabel} FAQs first` : "View all FAQs"}
+      </a>
+    </p>
+  );
+};
 
-  <Card title="For educators" icon="graduation-cap" href="/guides/educators">
-    Get oriented to courses, classrooms, students, and learning insights.
-  </Card>
+Start with a role guide below, [search all guides](/guides), or browse common questions below.
 
-  <Card title="For parents" icon="users-round" href="/guides/parents">
-    Learn where to find your child's learning and progress information.
-  </Card>
-</CardGroup>
+## Guides
 
-## Frequently asked questions
+<RoleAwareGuides />
+
+## FAQs
+
+<RoleAwareFaqLink />
 
 <AccordionGroup>
   <Accordion title="What is Enya Learning?">
-    Enya Learning is a learning platform for students, educators, and families. It brings courses and role-specific learning tools together in one place.
+    Enya Learning is a learning platform focused on literacy for students, educators, and parents. It brings courses and role-specific learning tools together in one place.
   </Accordion>
-
   <Accordion title="Who is this help center for?">
-    This help center is for students, educators, and parents using Enya Learning. Choose the guide above that best matches your role.
+    This help center is for students, educators, and parents using Enya Learning. Choose the guide that best matches your role.
   </Accordion>
-
   <Accordion title="How do I get started?">
     If you already have an account, sign in through your Enya Learning sign-in page. If you are new, start the sign-up flow and select your role. See the [Getting started guide](/guides/getting-started) for an overview.
-  </Accordion>
-
-  <Accordion title="I forgot my password. How can I reset it?">
-    On the sign-in page, choose **Forgot Password?** and follow the on-screen steps to reset your password.
-  </Accordion>
-
-  <Accordion title="How do I join a classroom?">
-    Open **Classrooms**, choose **Join Classroom**, and enter the code for your class. Follow the [joining a classroom guide](/guides/tutorials/joining-a-classroom) if you need a walkthrough.
-  </Accordion>
-
-  <Accordion title="Where can I find guides inside Enya Learning?">
-    Students, educators, and parents have a **Guides** area in their Enya Learning dashboard. This help center also has role-based guides at the top of this page.
-  </Accordion>
-
-  <Accordion title="How does XP work?">
-    XP is earned through course activities and games. See the [XP guide](/guides/tutorials/how-xp-works) for the current rules and where to find them in the app.
   </Accordion>
 </AccordionGroup>
