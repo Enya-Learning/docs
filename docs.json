@@ -1,75 +1,80 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Enya Learning Help Center",
+  "theme": "maple",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#012AFC",
+    "light": "#5671FD",
+    "dark": "#000832"
   },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+  "fonts": {
+    "family": "Inter"
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/enya_icon.svg",
+    "dark": "/enya_icon_dark.svg",
+    "href": "https://www.enyalearning.com/"
+  },
+  "favicon": "/enya_icon.svg",
+  "appearance": {
+    "default": "light"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Help center",
+        "pages": ["index"]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          {
+            "group": "Overview",
+            "root": "guides/index",
+            "pages": [
+              "guides/educators",
+              "guides/parents",
+              "guides/students",
+              "guides/getting-started",
+              "guides/tutorials/joining-a-classroom",
+              "guides/tutorials/how-xp-works"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "FAQs",
+        "pages": [
+          {
+            "group": "Overview",
+            "root": "faqs/index",
+            "pages": [
+              "faqs/what-is-enya-learning",
+              "faqs/who-is-this-help-center-for",
+              "faqs/how-do-i-get-started",
+              "faqs/reset-password",
+              "faqs/join-a-classroom",
+              "faqs/where-to-find-guides",
+              "faqs/how-does-xp-work"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Documentation",
+        "pages": ["documentation/index"]
+      }
+    ]
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:support@mintlify.com"
+        "label": "Enya Learning",
+        "href": "https://www.enyalearning.com/"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
     ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
-  },
-  "icons": {
-    "library": "lucide"
   }
 }

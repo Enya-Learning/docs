@@ -1,0 +1,276 @@
+---
+title: "FAQs"
+description: "Find answers for educators, students, and parents."
+---
+
+import { useHelpRole } from "/snippets/help-role.tsx";
+
+Browse common questions by role, or search for a topic.
+
+export const FaqDirectory = () => {
+  const role = useHelpRole();
+  const commonQuestions = [
+    {
+      question: "What is Enya Learning?",
+      answer:
+        "Enya Learning is a learning platform focused on literacy for students, educators, and parents. It brings courses and role-specific learning tools together in one place.",
+      href: "/faqs/what-is-enya-learning",
+      linkText: "Read more about Enya Learning",
+      keywords: "platform courses learning",
+    },
+    {
+      question: "How do I get started?",
+      answer:
+        "If you already have an account, sign in through your Enya Learning sign-in page. If you are new, start the sign-up flow and select your role.",
+      href: "/guides/getting-started",
+      linkText: "Read the getting started guide",
+      keywords: "sign in sign up account",
+    },
+    {
+      question: "I forgot my password. How can I reset it?",
+      answer:
+        "On the sign-in page, choose Forgot Password? and follow the on-screen steps to reset your password.",
+      href: "/faqs/reset-password",
+      linkText: "Password reset details",
+      keywords: "login credentials forgot password",
+    },
+    {
+      question: "Where can I find help inside Enya Learning?",
+      answer:
+        "Students, educators, and parents can select Help in their dashboard sidebar to open this help center. Browse role-based guides or search the FAQs.",
+      href: "/faqs/where-to-find-guides",
+      linkText: "Where to find help",
+      keywords: "help tutorial navigation",
+    },
+  ];
+
+  const sections = [
+    {
+      title: "Educators",
+      role: "educator",
+      questions: [
+        ...commonQuestions,
+        {
+          question: "How do I create a course?",
+          answer:
+            "Start with a course prompt or pre-made example, choose the grade and curriculum, answer the follow-up questions, and then start generation.",
+          href: "/guides/educators#create-a-course",
+          linkText: "See the course creation steps",
+          keywords: "course builder generate grade curriculum",
+          image: {
+            src: "/images/teacher-course-creation.png",
+            alt: "Educator course creation screen with a course prompt and curriculum selector.",
+            caption: "Start a course with a prompt and choose its curriculum.",
+          },
+        },
+        {
+          question: "How do I set up a classroom?",
+          answer:
+            "Create a classroom with a name, description, and grade level. Share its join code with students, or add students yourself or by importing a CSV roster.",
+          href: "/guides/educators#set-up-a-classroom",
+          linkText: "See classroom setup details",
+          keywords: "class roster import student code",
+          image: {
+            src: "/images/teacher-classroom-roster.png",
+            alt: "Add students to a classroom roster using a file upload or pasted CSV rows.",
+            caption: "Add students individually or import a roster file.",
+          },
+        },
+        {
+          question: "How do I assign courses to my classroom?",
+          answer:
+            "Open Classrooms, choose Add courses, then browse Enya courses and add or copy a course to your classroom.",
+          href: "/guides/educators#review-and-assign-courses",
+          linkText: "See course assignment details",
+          keywords: "classroom assign browse copy",
+        },
+        {
+          question: "Where can I review student learning?",
+          answer:
+            "Open Analytics to review information about your students and their learning.",
+          href: "/guides/educators#follow-learning-and-share-feedback",
+          linkText: "See the educator overview",
+          keywords: "progress analytics student",
+        },
+      ],
+    },
+    {
+      title: "Students",
+      role: "student",
+      questions: [
+        ...commonQuestions,
+        {
+          question: "How do I find courses?",
+          answer:
+            "Choose Explore to browse available courses. Search the course library, filter by grade, and open a course to work through its activities.",
+          href: "/guides/students#explore-courses",
+          linkText: "See how to explore courses",
+          keywords: "browse search grade activities",
+        },
+        {
+          question: "How do I join a classroom?",
+          answer:
+            "Open Classrooms, choose Join Classroom, and enter the code from your teacher.",
+          href: "/guides/tutorials/joining-a-classroom",
+          linkText: "Follow the classroom join tutorial",
+          keywords: "class code teacher",
+        },
+        {
+          question: "Where can I check my skill progress?",
+          answer:
+            "Open Skills to review your skill progress. Completing activities can add to this view.",
+          href: "/guides/students#practice-and-track-progress",
+          linkText: "See student progress options",
+          keywords: "skills progress activities",
+          image: {
+            src: "/images/student-progress.png",
+            alt: "Student My Progress screen showing progress across two language domains.",
+            caption: "Review progress across learning domains.",
+          },
+        },
+        {
+          question: "How does XP work?",
+          answer:
+            "XP is earned through course activities and games. Check the XP summary on your student dashboard for your totals and the current daily game XP limit.",
+          href: "/guides/tutorials/how-xp-works",
+          linkText: "Read how XP works",
+          keywords: "points games rewards daily limit",
+        },
+      ],
+    },
+    {
+      title: "Parents",
+      role: "parent",
+      questions: [
+        ...commonQuestions,
+        {
+          question: "How can I check my child's recent activity?",
+          answer:
+            "Open Home to see recent activity for your connected students. Activity cards can show completed videos or quizzes, including a video duration or quiz score.",
+          href: "/guides/parents#start-at-home",
+          linkText: "See the Parent Home overview",
+          keywords: "home progress video quiz",
+          image: {
+            src: "/images/parent-home-activity.png",
+            alt: "Parent Home showing two recent learning activity cards.",
+            caption: "Recent activity appears on Parent Home.",
+          },
+        },
+        {
+          question: "How do I find courses for my child?",
+          answer:
+            "Open Courses to browse Enya courses, search the library, filter by grade, and preview a course before assigning it.",
+          href: "/guides/parents#browse-courses",
+          linkText: "See how to browse courses",
+          keywords: "assign course grade search",
+          image: {
+            src: "/images/parent-course-library.png",
+            alt: "Parent Courses page with course search, a grade filter, and course cards.",
+            caption: "Browse Enya courses from the parent dashboard.",
+          },
+        },
+        {
+          question: "Where can I find school resources?",
+          answer:
+            "Open Resources to browse materials shared by your child's school. Search by title or description, filter by resource type, then preview or download available items.",
+          href: "/guides/parents#find-school-resources",
+          linkText: "See how to find school resources",
+          keywords: "materials download preview",
+        },
+        {
+          question: "What if my child has not finished joining a classroom?",
+          answer:
+            "Home may show a Pending card with a classroom join code. Share the code with your child so they can enter it in Enya Learning.",
+          href: "/guides/parents#start-at-home",
+          linkText: "See the Parent Home overview",
+          keywords: "pending code classroom join",
+        },
+      ],
+    },
+  ];
+
+  const [query, setQuery] = useState("");
+  const searchTerm = query.trim().toLowerCase();
+  const roleOrderedSections = role
+    ? [
+        ...sections
+          .filter((section) => section.role === role)
+          .map((section) => ({
+            ...section,
+            questions: [
+              ...section.questions.filter((item) => !commonQuestions.includes(item)),
+              ...section.questions.filter((item) => commonQuestions.includes(item)),
+            ],
+          })),
+        ...sections.filter((section) => section.role !== role),
+      ]
+    : sections;
+  const filteredSections = roleOrderedSections
+    .map((section) => ({
+      ...section,
+      questions: section.questions.filter((item) =>
+        `${section.title} ${item.question} ${item.answer} ${item.keywords}`
+          .toLowerCase()
+          .includes(searchTerm),
+      ),
+    }))
+    .filter((section) => section.questions.length > 0);
+  const resultCount = filteredSections.reduce(
+    (count, section) => count + section.questions.length,
+    0,
+  );
+  const roleLabel =
+    role === "educator" ? "Educator" : role === "parent" ? "Parent" : "Student";
+
+  return (
+    <div className="help-faq-directory">
+      <div className="help-guide-search">
+        <label className="help-guide-search__label" htmlFor="faq-search">
+          Search FAQs
+        </label>
+        <input
+          className="help-guide-search__input"
+          id="faq-search"
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search by question or topic, such as XP or classroom"
+        />
+        <p className="help-guide-search__status" aria-live="polite">
+          {`${role ? `${roleLabel} questions first. ` : ""}Showing ${resultCount} FAQ entries`}
+        </p>
+      </div>
+      {filteredSections.length > 0 ? (
+        <div className="help-faq-sections">
+          {filteredSections.map((section) => (
+            <section className="help-faq-section" key={section.title}>
+              <h2>{section.title}</h2>
+              <div className="help-faq-list">
+                {section.questions.map((item) => (
+                  <details className="help-faq-accordion" key={item.question}>
+                    <summary>{item.question}</summary>
+                    <div className="help-faq-accordion__answer">
+                      <p>{item.answer}</p>
+                      {item.image && (
+                        <Frame caption={item.image.caption} className="my-4">
+                          <img src={item.image.src} alt={item.image.alt} />
+                        </Frame>
+                      )}
+                      <a href={item.href}>{item.linkText}</a>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <p className="help-guide-search__empty">
+          No matching FAQs. Try another question or topic.
+        </p>
+      )}
+    </div>
+  );
+};
+
+<FaqDirectory />

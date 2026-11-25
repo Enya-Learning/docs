@@ -1,0 +1,165 @@
+---
+title: "Guides"
+description: "Role overviews and quick tutorials for common tasks in Enya Learning."
+---
+
+import { useHelpRole } from "/snippets/help-role.tsx";
+
+export const GuideSearch = () => {
+  const role = useHelpRole();
+  const guides = [
+    {
+      title: "Teacher overview",
+      description: "Explore courses, classrooms, resources, and student learning tools.",
+      href: "/guides/educators",
+      keywords: "teacher educator course classroom analytics",
+      audience: "educator",
+      image: "/images/teacher-overview-poster.jpg",
+      imageClass: "help-guide-card__image--cover",
+    },
+    {
+      title: "Parent overview",
+      description: "Find student activity, assign courses, and browse school resources.",
+      href: "/guides/parents",
+      keywords: "parent guardian child progress students",
+      audience: "parent",
+      image: "/images/home-parents.png",
+      imageClass: "help-guide-card__image--role",
+    },
+    {
+      title: "Student overview",
+      description: "Explore courses, classrooms, games, skills, and XP.",
+      href: "/guides/students",
+      keywords: "student learner practice leaderboard",
+      audience: "student",
+      image: "/images/home-students.png",
+      imageClass: "help-guide-card__image--role",
+    },
+    {
+      title: "Getting started",
+      description: "Sign in, choose your role, and find your way around Enya Learning.",
+      href: "/guides/getting-started",
+      keywords: "login account sign up role",
+      audience: "all",
+      image: "/images/home-getting-started.png",
+      imageClass: "help-guide-card__image--cover",
+    },
+    {
+      title: "Join a classroom",
+      description: "Use a classroom code to join your class.",
+      href: "/guides/tutorials/joining-a-classroom",
+      keywords: "student class code teacher",
+      audience: "all",
+      relatedRoles: ["student", "educator", "parent"],
+    },
+    {
+      title: "How XP works",
+      description: "Learn which activities earn XP and where to check game rules.",
+      href: "/guides/tutorials/how-xp-works",
+      keywords: "points experience games rewards",
+      audience: "student",
+    },
+  ];
+  const pageSize = 4;
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(0);
+  const searchTerm = query.trim().toLowerCase();
+  const matches = guides.filter((guide) =>
+    `${guide.title} ${guide.description} ${guide.keywords}`.toLowerCase().includes(searchTerm),
+  );
+  const priority = (guide) => {
+    if (!role) return 0;
+    if (guide.audience === role) return 0;
+    if (guide.relatedRoles?.includes(role)) return 1;
+    if (guide.audience === "all") return 2;
+    return 3;
+  };
+  const orderedMatches = role
+    ? [...matches].sort((first, second) => priority(first) - priority(second))
+    : matches;
+  const pageCount = Math.max(1, Math.ceil(orderedMatches.length / pageSize));
+  const currentPage = Math.min(page, pageCount - 1);
+  const visibleGuides = orderedMatches.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
+  const firstResult = orderedMatches.length === 0 ? 0 : currentPage * pageSize + 1;
+  const lastResult = Math.min((currentPage + 1) * pageSize, orderedMatches.length);
+  const roleLabel =
+    role === "educator" ? "Educator" : role === "parent" ? "Parent" : "Student";
+
+  return (
+    <div className="help-guide-directory">
+      <div className="help-guide-search">
+        <label className="help-guide-search__label" htmlFor="guide-search">
+          Search guides and tutorials
+        </label>
+        <input
+          className="help-guide-search__input"
+          id="guide-search"
+          type="search"
+          value={query}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setPage(0);
+          }}
+          placeholder="Search by role or topic, such as classroom or XP"
+        />
+        <p className="help-guide-search__status" aria-live="polite">
+          {`${role ? `${roleLabel} guides first. ` : ""}Showing ${firstResult}-${lastResult} of ${orderedMatches.length} ${
+            searchTerm ? "matching guides" : "guides"
+          }`}
+        </p>
+      </div>
+      {visibleGuides.length > 0 ? (
+        <>
+          <div className="help-guide-grid">
+            {visibleGuides.map((guide) => (
+              <a className="help-guide-card" key={guide.href} href={guide.href}>
+                {guide.image && (
+                  <img
+                    className={`help-guide-card__image ${guide.imageClass}`}
+                    src={guide.image}
+                    alt=""
+                  />
+                )}
+                <span className="help-guide-card__content">
+                  <span className="help-guide-card__title">{guide.title}</span>
+                  <span className="help-guide-card__description">{guide.description}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+          {pageCount > 1 && (
+            <nav className="help-guide-pagination" aria-label="Guide pages">
+              <button
+                type="button"
+                className="help-guide-pagination__button"
+                onClick={() => setPage(currentPage - 1)}
+                disabled={currentPage === 0}
+                aria-label="Show previous guides"
+              >
+                Previous
+              </button>
+              <span aria-live="polite">
+                Page {currentPage + 1} of {pageCount}
+              </span>
+              <button
+                type="button"
+                className="help-guide-pagination__button"
+                onClick={() => setPage(currentPage + 1)}
+                disabled={currentPage === pageCount - 1}
+                aria-label="Show more guides"
+              >
+                Next
+              </button>
+            </nav>
+          )}
+        </>
+      ) : (
+        <p className="help-guide-search__empty">No matching guides. Try another role or topic.</p>
+      )}
+    </div>
+  );
+};
+
+Browse all guides below, or use the search to find a role or topic.
+
+<GuideSearch />
